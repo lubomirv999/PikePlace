@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Engine.cs" />
+    <Compile Include="Core\Menu.cs" />
     <Compile Include="Models\Enums\Type.cs" />
     <Compile Include="Models\Boss\Boss.cs" />
     <Compile Include="Models\Boss\Sephiroth.cs" />

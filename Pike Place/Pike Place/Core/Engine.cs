@@ -6,7 +6,9 @@ namespace Pike_Place.Core
     {
         public void Run()
         {
-            Console.WriteLine("Game is running");
+            var menuItems = new string[] { "Create Hero", "Credits", "Exit" };
+            var menu = new Menu();
+            Menu.Draw(menuItems);
         }
     }
 }
