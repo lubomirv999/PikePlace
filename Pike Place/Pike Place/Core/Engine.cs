@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Pike_Place.Core
+﻿namespace Pike_Place.Core
 {
     public class Engine
     {

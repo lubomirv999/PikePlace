@@ -3,8 +3,8 @@
     public enum Type
     {
         None,
-        Mage,
-        Warrior,
-        Marksman
+        Mage = 0,
+        Warrior = 1,
+        Marksman = 2
     }
 }

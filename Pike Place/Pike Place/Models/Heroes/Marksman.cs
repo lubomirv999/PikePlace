@@ -4,12 +4,9 @@ namespace Pike_Place.Heroes
 {
     public class Marksman : Hero
     {
-        public Marksman(string name, int health, int power, int level)
+        public Marksman(string name)
         {
             this.Name = name;
-            this.Health = health;
-            this.Power = power;
-            this.Level = level;
         }
 
         public string Name { get; }

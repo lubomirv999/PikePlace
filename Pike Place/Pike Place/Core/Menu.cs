@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Pike_Place.Heroes;
+using System;
 
 namespace Pike_Place.Core
 {
     class Menu
     {
-
         public static void Draw(string[] menuItems)
         {
             Console.CursorVisible = false;
@@ -62,21 +62,65 @@ namespace Pike_Place.Core
                         }
                         else if (selecteditem == 0)
                         {
-
+                            CreateHero();
                         }
                         break;
                 }
                 Console.Clear();
             }
         }
+
+        private static void CreateHero()
+        {
+            Console.Clear();
+            Console.WriteLine("Choose your hero type:");
+            Console.WriteLine("Mage - 0, Warrior - 1, Marksman - 2");
+            var heroType = int.Parse(Console.ReadLine());
+            string name;
+            string type;
+            
+            switch (heroType)
+            {
+                case 0:
+                    type = "Mage";
+                    Console.Write("Enter name for your hero: ");
+                    name = Console.ReadLine();
+                    Mage mage = new Mage(name);
+                    Console.WriteLine(HeroCreatedSuccesfully(name, type));
+                    break;
+                case 1:
+                    type = "Warrior";
+                    Console.Write("Enter name for your hero: ");
+                    name = Console.ReadLine();
+                    Warrior warrior = new Warrior(name);
+                    Console.WriteLine(HeroCreatedSuccesfully(name, type));
+                    break;
+                case 2:
+                    type = "Marksman";
+                    Console.Write("Enter name for your hero: ");
+                    name = Console.ReadLine();
+                    Marksman marksman = new Marksman(name);
+                    Console.WriteLine(HeroCreatedSuccesfully(name, type));
+                    break;
+            }
+
+            ClearConsole();
+        }
+
         private static void ShowCredits()
         {
             Console.Clear();
             Console.WriteLine("По проекта са работили:");
-            for (int i = 0; i < 10; i++)
-            {
-                Console.WriteLine();
-            }
+            Console.WriteLine("Lyubomir Valev");
+            Console.WriteLine("Nikolai Bonev");
+            Console.WriteLine("Martin Todorov");
+            Console.WriteLine("Maria Velikova");
+
+            ClearConsole();
+        }
+
+        private static void ClearConsole()
+        {
             Console.Write("    ");
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Black;
@@ -89,6 +133,11 @@ namespace Pike_Place.Core
                 key = Console.ReadKey();
             }
             Console.ResetColor();
+        }
+
+        private static string HeroCreatedSuccesfully(string name, string type)
+        {
+            return $"Hero with name: {name} from class {type} was succesfully created";
         }
     }
 }
