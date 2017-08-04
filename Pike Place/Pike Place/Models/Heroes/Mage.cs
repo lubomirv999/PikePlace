@@ -11,10 +11,10 @@ namespace Pike_Place.Heroes
 
         public string Name { get; }
 
-        public int Health { get; }
+        public int Health = 60;
 
-        public int Power { get; }
+        public int Power = 80;
 
-        public int Level { get; }
+        public int Level = 1;
     }
 }

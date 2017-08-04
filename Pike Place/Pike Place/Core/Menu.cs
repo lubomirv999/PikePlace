@@ -1,4 +1,6 @@
 ﻿using Pike_Place.Heroes;
+using Pike_Place.Levels;
+using Pike_Place.Models;
 using System;
 
 namespace Pike_Place.Core
@@ -62,7 +64,7 @@ namespace Pike_Place.Core
                         }
                         else if (selecteditem == 0)
                         {
-                            CreateHero();
+                            CreateHero(new string[] { "Mage", "Warrior", "Marksman", "back" });
                         }
                         break;
                 }
@@ -70,42 +72,98 @@ namespace Pike_Place.Core
             }
         }
 
-        private static void CreateHero()
+        private static void CreateHero(string[] herotype)
         {
             Console.Clear();
-            Console.WriteLine("Choose your hero type:");
-            Console.WriteLine("Mage - 0, Warrior - 1, Marksman - 2");
-            var heroType = int.Parse(Console.ReadLine());
-            string name;
-            string type;
-            
-            switch (heroType)
+            Console.CursorVisible = false;
+            int selecteditem = 0;
+            while (true)
             {
-                case 0:
-                    type = "Mage";
-                    Console.Write("Enter name for your hero: ");
-                    name = Console.ReadLine();
-                    Mage mage = new Mage(name);
-                    Console.WriteLine(HeroCreatedSuccesfully(name, type));
-                    break;
-                case 1:
-                    type = "Warrior";
-                    Console.Write("Enter name for your hero: ");
-                    name = Console.ReadLine();
-                    Warrior warrior = new Warrior(name);
-                    Console.WriteLine(HeroCreatedSuccesfully(name, type));
-                    break;
-                case 2:
-                    type = "Marksman";
-                    Console.Write("Enter name for your hero: ");
-                    name = Console.ReadLine();
-                    Marksman marksman = new Marksman(name);
-                    Console.WriteLine(HeroCreatedSuccesfully(name, type));
-                    break;
-            }
+                Console.WriteLine("Choose your hero type:");
+                for (int i = 0; i < herotype.Length; i++)
+                {
+                    if (selecteditem == i)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write("->");
+                        Console.ResetColor();
+                        Console.BackgroundColor = ConsoleColor.Gray;
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.WriteLine(" " + herotype[i]);
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.WriteLine("- " + herotype[i]);
+                    }
+                }
+                var key = Console.ReadKey();
+                switch (key.Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        if (selecteditem == 0)
+                        {
+                            selecteditem = herotype.Length - 1;
+                        }
+                        else
+                        {
+                            selecteditem--;
+                        }
+                        break;
+                    case ConsoleKey.DownArrow:
+                        if (selecteditem == herotype.Length - 1)
+                        {
+                            selecteditem = 0;
+                        }
+                        else
+                        {
+                            selecteditem++;
+                        }
+                        break;
+                    case ConsoleKey.Enter:
+                        if (selecteditem == 0)
+                        {
+                            NameHero();
+                            var name = Console.ReadLine();
+                            var hero = new Mage(name);
+                            var startlevel = new Level1();
+                            startlevel.Start(hero);
 
-            ClearConsole();
+                        }
+                        else if (selecteditem == 1)
+                        {
+                            NameHero();
+                            var name = Console.ReadLine();
+                            var hero = new Warrior(name);
+                            var startlevel = new Level1();
+                            startlevel.Start(hero);
+                        }
+                        else if (selecteditem == 2)
+                        {
+                            NameHero();
+                            var name = Console.ReadLine();
+                            var hero = new Marksman(name);
+                            var startlevel = new Level1();
+                            startlevel.Start(hero);
+                        }
+                        else if (selecteditem == 3)
+                        {
+                            Console.Clear();
+                            Draw(new string[] { "Create Hero", "Credits", "Exit" });
+                        }
+                        break;
+                }
+                Console.Clear();
+            }
         }
+
+        private static void NameHero()
+        {
+            Console.Clear();
+            Console.Write("Name your hero: ");
+        }
+            
+           
 
         private static void ShowCredits()
         {
@@ -121,6 +179,7 @@ namespace Pike_Place.Core
 
         private static void ClearConsole()
         {
+            Console.WriteLine();
             Console.Write("    ");
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Black;

@@ -6,10 +6,10 @@ namespace Pike_Place.Models
     {
         public string Name { get; }
 
-        public int Health { get; }
+        public int Health { get; set; }
 
-        public int Power { get; }
+        public int Power { get; set; }
 
-        public int Level { get; }
+        public int Level { get; set; }
     }
 }

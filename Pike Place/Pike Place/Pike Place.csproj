@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\Menu.cs" />
+    <Compile Include="Levels\Level1.cs" />
     <Compile Include="Models\Enums\Type.cs" />
     <Compile Include="Models\Boss\Boss.cs" />
     <Compile Include="Models\Boss\Sephiroth.cs" />
