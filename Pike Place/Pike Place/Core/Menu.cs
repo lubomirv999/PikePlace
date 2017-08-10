@@ -11,8 +11,10 @@ namespace Pike_Place.Core
         {
             Console.CursorVisible = false;
             int selecteditem = 0;
-            while (true)
+            bool gameStarted = false;
+            while (gameStarted==false)
             {
+                Console.Clear();
                 for (int i = 0; i < menuItems.Length; i++)
                 {
                     if (selecteditem == i)
@@ -34,6 +36,7 @@ namespace Pike_Place.Core
                 switch (key.Key)
                 {
                     case ConsoleKey.UpArrow:
+                        Console.Clear();
                         if (selecteditem == 0)
                         {
                             selecteditem = menuItems.Length - 1;
@@ -44,6 +47,7 @@ namespace Pike_Place.Core
                         }
                         break;
                     case ConsoleKey.DownArrow:
+                        Console.Clear();
                         if (selecteditem == menuItems.Length - 1)
                         {
                             selecteditem = 0;
@@ -64,20 +68,21 @@ namespace Pike_Place.Core
                         }
                         else if (selecteditem == 0)
                         {
-                            CreateHero(new string[] { "Mage", "Warrior", "Marksman", "back" });
+                            CreateHero(new string[] { "Mage", "Warrior", "Marksman", "back" },ref gameStarted);
                         }
                         break;
                 }
-                Console.Clear();
+             
             }
         }
 
-        private static void CreateHero(string[] herotype)
+        private static void CreateHero(string[] herotype,ref bool started)
         {
             Console.Clear();
             Console.CursorVisible = false;
             int selecteditem = 0;
-            while (true)
+            bool goBack = false;
+            while (started==false && goBack==false)
             {
                 Console.WriteLine("Choose your hero type:");
                 for (int i = 0; i < herotype.Length; i++)
@@ -101,6 +106,8 @@ namespace Pike_Place.Core
                 switch (key.Key)
                 {
                     case ConsoleKey.UpArrow:
+                        Console.Clear();
+
                         if (selecteditem == 0)
                         {
                             selecteditem = herotype.Length - 1;
@@ -111,6 +118,8 @@ namespace Pike_Place.Core
                         }
                         break;
                     case ConsoleKey.DownArrow:
+                        Console.Clear();
+
                         if (selecteditem == herotype.Length - 1)
                         {
                             selecteditem = 0;
@@ -123,47 +132,54 @@ namespace Pike_Place.Core
                     case ConsoleKey.Enter:
                         if (selecteditem == 0)
                         {
-                            NameHero();
-                            var name = Console.ReadLine();
-                            var hero = new Mage(name);
+                            var hero = new Mage(NameHero());
                             var startlevel = new Level1();
                             startlevel.Start(hero);
+                            started = true;
 
                         }
                         else if (selecteditem == 1)
                         {
-                            NameHero();
-                            var name = Console.ReadLine();
-                            var hero = new Warrior(name);
+                           
+                            var hero = new Warrior(NameHero());
                             var startlevel = new Level1();
                             startlevel.Start(hero);
+                          
+                            started = true;
+
                         }
                         else if (selecteditem == 2)
                         {
-                            NameHero();
-                            var name = Console.ReadLine();
+                            var name = NameHero();
                             var hero = new Marksman(name);
                             var startlevel = new Level1();
                             startlevel.Start(hero);
+                            started = true;
+
+
                         }
                         else if (selecteditem == 3)
                         {
                             Console.Clear();
-                            Draw(new string[] { "Create Hero", "Credits", "Exit" });
+                            goBack = true;
                         }
                         break;
+                    default:Console.Clear();
+                        break;
                 }
-                Console.Clear();
+                
             }
         }
 
-        private static void NameHero()
+        private static string NameHero()
         {
             Console.Clear();
             Console.Write("Name your hero: ");
+            var name = Console.ReadLine();
+            return name;
         }
-            
-           
+
+
 
         private static void ShowCredits()
         {

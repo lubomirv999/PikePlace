@@ -7,6 +7,8 @@ namespace Pike_Place.Levels
     {
         internal void Start(Hero hero)
         {
+            Console.Clear();
+            Console.WriteLine("Level 1 started..");
         }
 
     }
