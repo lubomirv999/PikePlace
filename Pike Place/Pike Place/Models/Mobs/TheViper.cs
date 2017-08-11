@@ -2,17 +2,20 @@
 {
     public class TheViper : Mob
     {
-        public TheViper(string name, int health, int power)
+        private const int InitHealth = 7;
+        private const int InitAttack = 4;
+        private const int InitExperience = 15;
+
+        public TheViper()
         {
-            this.Name = name;
-            this.Health = health;
-            this.Power = power;
+            this.Health = InitHealth;
+            this.Attack = InitAttack;
+            this.Experience = InitExperience;
         }
 
-        public string Name { get; }
-
-        public int Health { get; }
-
-        public int Power { get; }
+        public override string ToString()
+        {
+            return $"{nameof(TheViper)}";
+        }
     }
 }

@@ -2,6 +2,10 @@
 {
     public interface ILevel
     {
-        int Level { get; }
+        int CurrentLevel { get; }
+
+        int Experience { get; }
+
+        void LevelUp(int expGainFromMonster);
     }
 }

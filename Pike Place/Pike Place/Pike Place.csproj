@@ -44,18 +44,16 @@
   <ItemGroup>
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\Menu.cs" />
+    <Compile Include="Factories\MobFactroy.cs" />
+    <Compile Include="Interfaces\Abilities\IMana.cs" />
+    <Compile Include="Interfaces\Abilities\Level.cs" />
+    <Compile Include="Interfaces\Abilities\IDamagable.cs" />
     <Compile Include="Levels\Level1.cs" />
     <Compile Include="Models\Enums\Type.cs" />
-    <Compile Include="Models\Boss\Boss.cs" />
-    <Compile Include="Models\Boss\Sephiroth.cs" />
     <Compile Include="Models\Heroes\Mage.cs" />
     <Compile Include="Models\Heroes\Marksman.cs" />
     <Compile Include="Models\Heroes\Warrior.cs" />
-    <Compile Include="Interfaces\Abilities\IHealth.cs" />
     <Compile Include="Interfaces\Abilities\ILevel.cs" />
-    <Compile Include="Interfaces\Abilities\INamable.cs" />
-    <Compile Include="Interfaces\Abilities\IPower.cs" />
-    <Compile Include="Interfaces\Creatures\IBoss.cs" />
     <Compile Include="Interfaces\Creatures\IHero.cs" />
     <Compile Include="Interfaces\Creatures\IMob.cs" />
     <Compile Include="Models\Heroes\Hero.cs" />
@@ -63,6 +61,8 @@
     <Compile Include="Models\Mobs\Mob.cs" />
     <Compile Include="Models\Mobs\SkullCrusher.cs" />
     <Compile Include="Models\Mobs\TheViper.cs" />
+    <Compile Include="Models\Spells\Mage\FrostBolt.cs" />
+    <Compile Include="Models\Spells\ISpell.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\" />
+    <Folder Include="Models\Boss\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

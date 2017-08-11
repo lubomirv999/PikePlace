@@ -2,17 +2,20 @@
 {
     public class SkullCrusher : Mob
     {
-        public SkullCrusher(string name, int health, int power)
+        private const int InitHealth = 15;
+        private const int InitAttack = 2;
+        private const int InitExperience = 12;
+
+        public SkullCrusher()
         {
-            this.Name = name;
-            this.Health = health;
-            this.Power = power;
+            this.Health = InitHealth;
+            this.Attack = InitAttack;
+            this.Experience = InitExperience;
         }
 
-        public string Name { get; }
-
-        public int Health { get; }
-
-        public int Power { get; }
+        public override string ToString()
+        {
+            return $"{nameof(SkullCrusher)}";
+        }
     }
 }

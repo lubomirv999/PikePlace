@@ -4,8 +4,8 @@
     {
         public void Run()
         {
-            var menu = new Menu();
-            Menu.Draw(new string[] { "Create Hero", "Credits", "Exit" });
+            //var menu = new Menu();
+            //Menu.Draw(new string[] { "Create Hero", "Credits", "Exit" });
         }
     }
 }
