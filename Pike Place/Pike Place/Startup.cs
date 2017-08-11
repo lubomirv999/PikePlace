@@ -15,7 +15,7 @@ namespace Pike_Place
             //engine.Run();
 
             Hero hero = new Mage("Pesho");
-            Random rnd = new Random(2);
+            Random rnd = new Random();
            
             Mob mob = MobFactroy.GenerateMob(rnd.Next(0 ,2));
             while (true)

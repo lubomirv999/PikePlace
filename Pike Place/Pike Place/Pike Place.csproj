@@ -63,6 +63,8 @@
     <Compile Include="Models\Mobs\TheViper.cs" />
     <Compile Include="Models\Spells\Mage\FrostBolt.cs" />
     <Compile Include="Models\Spells\ISpell.cs" />
+    <Compile Include="Models\Spells\Marsman\LongShot.cs" />
+    <Compile Include="Models\Spells\Warrior\Charge.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

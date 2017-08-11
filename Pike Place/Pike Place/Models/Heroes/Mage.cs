@@ -22,19 +22,5 @@ namespace Pike_Place.Heroes
             this.Mana = InitMana * this.Level.CurrentLevel;
         }
         
-        public override string AttackWithSpell(IMob mob)
-        {
-            mob.TakeDamage(Spell.Damage);
-
-            if (this.Mana < Spell.ManaCost)
-            {
-                throw new ArgumentException("Not enough mana");
-            }
-            this.Mana -= Spell.ManaCost;
-
-            this.Level.LevelUp(mob.GiveExperience());
-
-            return $"The Monster is Dead! Experience Gain: {mob.GiveExperience()}";
-        }
     }
 }

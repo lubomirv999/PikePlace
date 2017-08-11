@@ -1,4 +1,5 @@
-﻿using Pike_Place.Interfaces;
+﻿using System;
+using Pike_Place.Interfaces;
 using Pike_Place.Interfaces.Creatures;
 using Pike_Place.Models.Spells;
 
@@ -12,6 +13,10 @@ namespace Pike_Place.Models
         public int AttackPower { get; protected set; }
         public ILevel Level { get; protected set; }
         public ISpell Spell { get; protected set; }
+        public void TakeDamage(int attackPower)
+        {
+            this.Health -= attackPower;
+        }
 
         public string AutoAttack(IMob mob)
         {
@@ -23,12 +28,23 @@ namespace Pike_Place.Models
 
             return $"The Monster is Dead! Experience Gain: {mob.GiveExperience()}";
         }
-        public abstract  string AttackWithSpell(IMob mob);
-        public void TakeDamage(int attackPower)
+
+        public  string AttackWithSpell(IMob mob)
         {
-            this.Health -= attackPower;
+            mob.TakeDamage(Spell.Damage);
+
+            if (this.Mana < Spell.ManaCost)
+            {
+                throw new ArgumentException("Not enough mana");
+            }
+            this.Mana -= Spell.ManaCost;
+
+            this.Level.LevelUp(mob.GiveExperience());
+
+            return $"The Monster is Dead! Experience Gain: {mob.GiveExperience()}";
         }
 
-       
+
+
     }
 }
