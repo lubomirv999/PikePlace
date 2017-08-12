@@ -11,29 +11,8 @@ namespace Pike_Place
     {
         public static void Main()
         {
-            //Engine engine = new Engine();
-            //engine.Run();
-
-            Hero hero = new Mage("Pesho");
-            Random rnd = new Random();
-           
-            Mob mob = MobFactroy.GenerateMob(rnd.Next(0 ,2));
-            while (true)
-            {
-                Console.WriteLine($"You are facing the {mob.ToString()} Creature!!!");
-                try
-                {
-                    Console.WriteLine(hero.AttackWithSpell(mob));
-                    
-                }
-                catch (ArgumentException argEx)
-                {
-                    Console.WriteLine(argEx.Message);
-                }
-                
-            }
-            
-            
+            Engine engine = new Engine();
+            engine.Run();
         }
     }
 }

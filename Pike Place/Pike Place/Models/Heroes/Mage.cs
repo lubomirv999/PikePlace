@@ -20,6 +20,7 @@ namespace Pike_Place.Heroes
             this.Health = InitHealth * this.Level.CurrentLevel;
             this.AttackPower = InitAttackPower * this.Level.CurrentLevel;
             this.Mana = InitMana * this.Level.CurrentLevel;
+            this.HeroPicture = Constants.ShipPicture;
         }
         
     }

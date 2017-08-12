@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading;
+using Pike_Place.Factories;
 using Pike_Place.Models;
+using Pike_Place.Models.Mobs;
 
 namespace Pike_Place.Levels
 {
@@ -8,8 +12,44 @@ namespace Pike_Place.Levels
         internal void Start(Hero hero)
         {
             Console.Clear();
-            Console.WriteLine("Level 1 started..");
-        }
+            hero.Draw();
+            Random rnd = new Random();
 
+            Mob mob = MobFactroy.GenerateMob(rnd.Next(0, 2));
+            Stopwatch time = new Stopwatch();
+            time.Start();
+
+            do
+            {
+                if (time.Elapsed.Milliseconds % 100 == 0)
+                {
+                    if (Console.KeyAvailable)
+                    {
+                        ConsoleKeyInfo KeyInfo;
+
+                        KeyInfo = Console.ReadKey(true);
+                        hero.Move(KeyInfo, ref hero.position);
+                    }
+
+                    continue;
+                }
+            } while (true);
+
+
+            //            while (true)
+            //            {
+            //                Console.WriteLine($"You are facing the {mob.ToString()} Creature!!!");
+            //                try
+            //                {
+            //                    Console.WriteLine(hero.AttackWithSpell(mob));
+            //
+            //                }
+            //                catch (ArgumentException argEx)
+            //                {
+            //                    Console.WriteLine(argEx.Message);
+            //                }
+            //
+            //            }
+        }
     }
 }

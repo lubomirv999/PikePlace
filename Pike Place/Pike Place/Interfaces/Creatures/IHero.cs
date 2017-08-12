@@ -3,7 +3,7 @@ using Pike_Place.Interfaces.Creatures;
 
 namespace Pike_Place.Interfaces
 {
-    public interface IHero : IDamagable , IMana
+    public interface IHero : IDamagable , IMana,IMoveable,IDrawable
     {
         string Name { get; }
 
