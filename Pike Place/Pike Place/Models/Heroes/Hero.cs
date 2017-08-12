@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Pike_Place.Interfaces;
 using Pike_Place.Interfaces.Creatures;
 using Pike_Place.Models.Spells;
@@ -16,6 +17,8 @@ namespace Pike_Place.Models
         public int AttackPower { get; protected set; }
         public Coordinates position = new Coordinates(5, 5); //move to const
         public string[] HeroPicture { get; set; }
+        public int Height { get; set; }
+        public int Width { get; set; }
         public ILevel Level { get; protected set; }
         public ISpell Spell { get; protected set; }
 
@@ -65,10 +68,10 @@ namespace Pike_Place.Models
         public void Delete()
         {
             Coordinates coords = new Coordinates(this.position.x, this.position.y);
-            for (int i = 0; i < Constants.MainShipHeight; i++)
+            for (int i = 0; i < this.Height; i++)
             {
                 Console.SetCursorPosition(coords.x, coords.y);
-                Console.WriteLine(new string(' ', Constants.MainShipWidth));
+                Console.WriteLine(new string(' ',this.Width));
                 coords.y++;
             }
         }
@@ -79,9 +82,9 @@ namespace Pike_Place.Models
             {
                 case ConsoleKey.RightArrow:
                     this.Delete();
-                    if (coords.x < Constants.PlayBoxWidth - Constants.MainShipWidth)
+                    if (coords.x < Constants.PlayBoxWidth - this.Width)
                     {
-                        if (coords.x + Constants.MainShipSpeedX <= Constants.PlayBoxWidth - Constants.MainShipWidth)
+                        if (coords.x + Constants.MainShipSpeedX <= Constants.PlayBoxWidth - this.Width)
                             coords.x += Constants.MainShipSpeedX;
                         coords.x++;
                     }
@@ -102,9 +105,9 @@ namespace Pike_Place.Models
                 case ConsoleKey.UpArrow:
                     this.Delete();
 
-                    if (coords.y - 1 > Constants.FrameWidth)
+                    if (coords.y - 1 > Constants.FrameWidth+5)
                     {
-                        if (coords.y - Constants.MainShipSpeedY > Constants.FrameWidth)
+                        if (coords.y - Constants.MainShipSpeedY > Constants.FrameWidth+5)
                             coords.y -= Constants.MainShipSpeedY;
                         coords.y--;
                     }
@@ -115,16 +118,23 @@ namespace Pike_Place.Models
                 case ConsoleKey.DownArrow:
                     this.Delete();
 
-                    if (coords.y < Constants.PlayBoxHeight - Constants.MainShipHeight)
+                    if (coords.y < Constants.PlayBoxHeight - this.Height)
                     {
-                        if (coords.y + Constants.MainShipSpeedY <= Constants.PlayBoxHeight - Constants.MainShipHeight)
+                        if (coords.y + Constants.MainShipSpeedY <= Constants.PlayBoxHeight - this.Height)
                             coords.y += Constants.MainShipSpeedY;
                         coords.y++;
                     }
                     this.Draw();
 
                     break;
+                case ConsoleKey.A:
+                    this.Delete();
+                    Thread.Sleep(250);
+                            
+                    
+                    this.Draw();
 
+                    break;
                 default:
                     this.Draw();
                     break;

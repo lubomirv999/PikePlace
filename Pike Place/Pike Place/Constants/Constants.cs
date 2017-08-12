@@ -1,9 +1,11 @@
 ﻿
   public  static class Constants
     {
-        public static readonly string[] ShipPicture = new string[] { "(\\ _ /)", "(' x ')", "c(\")(\")" };
-        public const int MainShipHeight = 3;
-        public const int MainShipWidth = 7;
+        public static readonly string[] MagePicture = new string[] { "(\\ _ /)", "(' x ')", "c(\")(\")" };
+        public static readonly string[] MobPicture = new string[] { "________","|(.)(.)|", "|  __  |", "|______|" };
+
+    public const int MageHeight = 3;
+        public const int MageWidth = 7;
         public const int PlayBoxWidth = 116;
         public const int PlayBoxHeight = 38;
         // Console window size
@@ -15,5 +17,8 @@
         public const int MainShipSpawnPositionY = 35;
         public const int MainShipSpeedX = 3;
         public const int MainShipSpeedY = 2;
+        public const int MobSpawnPositionX = 90;
+        public const int MobSpawnPositionY = 25;
+
 }
 

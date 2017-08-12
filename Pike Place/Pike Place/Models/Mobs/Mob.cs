@@ -34,11 +34,25 @@ namespace Pike_Place.Models.Mobs
 
         public void Draw()
         {
-            
+            Coordinates coords = new Coordinates(Constants.MobSpawnPositionX,Constants.MobSpawnPositionY);
+
+            foreach (var line in Constants.MobPicture)
+            {
+                Console.SetCursorPosition(coords.x, coords.y);
+                Console.WriteLine("{0}", line);
+                coords.y++;
+            }
         }
+
         public void Delete()
         {
-
+//            Coordinates coords = new Coordinates(this.position.x, this.position.y);
+//            for (int i = 0; i < this.Height; i++)
+//            {
+//                Console.SetCursorPosition(coords.x, coords.y);
+//                Console.WriteLine(new string(' ', this.Width));
+//                coords.y++;
+//            }
         }
     }
 }

@@ -3,6 +3,7 @@ using Pike_Place.Levels;
 using Pike_Place.Models;
 using System;
 using System.Data;
+using Pike_Place.Models.Mobs;
 
 namespace Pike_Place.Core
 {
@@ -242,7 +243,7 @@ namespace Pike_Place.Core
             return $"Hero with name: {name} from class {type} was succesfully created";
         }
 
-        private static void DrawFrame()
+        public static void DrawFrame()
         {
             Console.WriteLine('\u2554' + new String('\u2550', Constants.PlayBoxWidth) + '\u2557');
             for (int i = 0; i < Constants.PlayBoxHeight; i++)
@@ -254,6 +255,17 @@ namespace Pike_Place.Core
 //            Console.WriteLine('\u2551' + "       " + string.Format("Health: " + new string('\u2665', health)).PadRight(16) +
 //                              '\u2551' + new String('#', 40) + '\u2551' + "    " + string.Format("Missed: {0}", missed) + "   " + string.Format("Score: {0:d15}", score).PadRight(25) + "  " + '\u2551');
 //            Console.WriteLine('\u255A' + new String('\u2550', Constants.PlayBoxWidth) + '\u255D');
+        }
+        public static void DrawScores(Hero hero ,Mob mob )
+        {
+            Console.SetCursorPosition(2, 2);
+            Console.Write($"{hero.Name}: Health:{hero.Health} | Mana:{hero.Mana} | Atack:{hero.AttackPower}");
+            Console.SetCursorPosition(55, 2);
+            Console.Write("VS" + new string(' ', 15));
+            Console.Write($"{mob.GetType().Name}: Health:{mob.Health} | Mana:{mob.Attack} | Atack:{mob.Experience}");
+            Console.SetCursorPosition(0, 3);
+            Console.WriteLine(new String('\u2550', Constants.PlayBoxWidth+2));
+
         }
     }
 }

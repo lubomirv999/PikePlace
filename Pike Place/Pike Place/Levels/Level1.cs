@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
+using Pike_Place.Core;
 using Pike_Place.Factories;
 using Pike_Place.Models;
 using Pike_Place.Models.Mobs;
@@ -12,10 +13,13 @@ namespace Pike_Place.Levels
         internal void Start(Hero hero)
         {
             Console.Clear();
+            Menu.DrawFrame();
             hero.Draw();
             Random rnd = new Random();
 
             Mob mob = MobFactroy.GenerateMob(rnd.Next(0, 2));
+            Menu.DrawScores(hero, mob);
+            mob.Draw();
             Stopwatch time = new Stopwatch();
             time.Start();
 
