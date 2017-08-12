@@ -1,6 +1,8 @@
-﻿namespace Pike_Place.Interfaces.Creatures
+﻿using Pike_Place.Interfaces.Abilities;
+
+namespace Pike_Place.Interfaces.Creatures
 {
-    public interface IMob : IDamagable
+    public interface IMob : IDamagable,IDrawable
     {
         int Health { get; }
 

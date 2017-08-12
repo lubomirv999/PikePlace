@@ -6,6 +6,6 @@ namespace Pike_Place.Interfaces.Abilities
 {
     public interface IMoveable
     {
-        void Move(ConsoleKeyInfo keyInfo, ref Hero.Coordinates coords);
+        void Move(ConsoleKeyInfo keyInfo, ref Coordinates coords);
     }
 }

@@ -4,11 +4,11 @@
         public static readonly string[] ShipPicture = new string[] { "(\\ _ /)", "(' x ')", "c(\")(\")" };
         public const int MainShipHeight = 3;
         public const int MainShipWidth = 7;
-        public const int PlayBoxWidth = 108;
-        public const int PlayBoxHeight = 46;
+        public const int PlayBoxWidth = 116;
+        public const int PlayBoxHeight = 38;
         // Console window size
-        public const int ConsoleWindowWidth = 110;
-        public const int ConsoleWindowHeight = 51;
+        public const int ConsoleWindowWidth = 120;
+        public const int ConsoleWindowHeight = 40;
         //Frame 
         public const int FrameWidth = 1;
         public const int MainShipSpawnPositionX = 48;

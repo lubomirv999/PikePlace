@@ -31,6 +31,14 @@ namespace Pike_Place.Models.Mobs
         {
             this.Health -= attackPower;
         }
-        
+
+        public void Draw()
+        {
+            
+        }
+        public void Delete()
+        {
+
+        }
     }
 }

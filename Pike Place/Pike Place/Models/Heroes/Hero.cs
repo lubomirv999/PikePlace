@@ -8,17 +8,7 @@ namespace Pike_Place.Models
 {
     public abstract class Hero : IHero
     {
-        public struct Coordinates
-        {
-            public int x;
-            public int y;
-
-            public Coordinates(int x, int y)
-            {
-                this.x = x;
-                this.y = y;
-            }
-        }
+       
 
         public string Name { get; protected set; }
         public int Health { get; protected set; }

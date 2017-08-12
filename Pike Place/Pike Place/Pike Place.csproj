@@ -64,6 +64,7 @@
     <Compile Include="Models\Mobs\Mob.cs" />
     <Compile Include="Models\Mobs\SkullCrusher.cs" />
     <Compile Include="Models\Mobs\TheViper.cs" />
+    <Compile Include="Models\Others\Coordinates.cs" />
     <Compile Include="Models\Spells\Mage\FrostBolt.cs" />
     <Compile Include="Models\Spells\ISpell.cs" />
     <Compile Include="Models\Spells\Marsman\LongShot.cs" />
