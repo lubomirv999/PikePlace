@@ -10,7 +10,7 @@
         public const int PlayBoxHeight = 38;
         // Console window size
         public const int ConsoleWindowWidth = 120;
-        public const int ConsoleWindowHeight = 40;
+        public const int ConsoleWindowHeight = 41;
         //Frame 
         public const int FrameWidth = 1;
         public const int MainShipSpawnPositionX = 48;

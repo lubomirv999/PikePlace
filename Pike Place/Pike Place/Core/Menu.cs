@@ -11,7 +11,8 @@ namespace Pike_Place.Core
     {
         public static void Draw(string[] menuItems)
         {
-            
+            Console.SetBufferSize(Constants.ConsoleWindowWidth, Constants.ConsoleWindowHeight);
+            Console.SetWindowSize(Constants.ConsoleWindowWidth, Constants.ConsoleWindowHeight);
             Console.CursorVisible = false;
             int selecteditem = 0;
             bool gameStarted = false;

@@ -105,9 +105,9 @@ namespace Pike_Place.Models
                 case ConsoleKey.UpArrow:
                     this.Delete();
 
-                    if (coords.y - 1 > Constants.FrameWidth+5)
+                    if (coords.y - 1 > Constants.FrameWidth+3)
                     {
-                        if (coords.y - Constants.MainShipSpeedY > Constants.FrameWidth+5)
+                        if (coords.y - Constants.MainShipSpeedY > Constants.FrameWidth)
                             coords.y -= Constants.MainShipSpeedY;
                         coords.y--;
                     }

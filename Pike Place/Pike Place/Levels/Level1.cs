@@ -12,7 +12,7 @@ namespace Pike_Place.Levels
     {
         internal void Start(Hero hero)
         {
-            Console.SetWindowSize(Constants.ConsoleWindowWidth, Constants.ConsoleWindowHeight);
+           
             Console.Clear();
             Menu.DrawFrame();
             hero.Draw();
@@ -26,7 +26,7 @@ namespace Pike_Place.Levels
 
             do
             {
-                if (time.Elapsed.Milliseconds % 100 == 0)
+                if (time.Elapsed.Milliseconds % 80 == 0)
                 {
                     if (Console.KeyAvailable)
                     {
