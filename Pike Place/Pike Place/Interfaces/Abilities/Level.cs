@@ -1,4 +1,4 @@
-﻿namespace Pike_Place.Interfaces.Concreet
+﻿namespace Pike_Place.Interfaces.Abilities
 {
     public class Level : ILevel
     {

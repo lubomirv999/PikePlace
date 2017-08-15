@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Threading;
-using Pike_Place.Interfaces;
+using Pike_Place.Interfaces.Abilities;
 using Pike_Place.Interfaces.Creatures;
+using Pike_Place.Models.Mobs;
+using Pike_Place.Models.Others;
 using Pike_Place.Models.Spells;
 
-
-namespace Pike_Place.Models
+namespace Pike_Place.Models.Heroes
 {
     public abstract class Hero : IHero
     {
@@ -15,7 +15,7 @@ namespace Pike_Place.Models
         public int Health { get; protected set; }
         public int Mana { get; protected set; }
         public int AttackPower { get; protected set; }
-        public Coordinates position = new Coordinates(5, 5); //move to const
+        public Coordinates position = new Coordinates(Constants.Constants.HeroSpawnPositionX, Constants.Constants.HeroSpawnPositionY);
         public string[] HeroPicture { get; set; }
         public int Height { get; set; }
         public int Width { get; set; }
@@ -27,15 +27,27 @@ namespace Pike_Place.Models
             this.Health -= attackPower;
         }
 
-        public string AutoAttack(IMob mob)
+        public string AutoAttack(Mob mob)
         {
-            mob.TakeDamage(this.AttackPower);
+            if (IsInRange(mob))
+            {
+                mob.TakeDamage(this.AttackPower);
 
-            this.TakeDamage(mob.Attack);
+                this.TakeDamage(mob.Attack);
+                if (mob.IsDead())
+                {
+                    this.Level.LevelUp(mob.GiveExperience());
+                    return $"You killed {mob.GetType().Name}!";
+                }
+                
 
-            this.Level.LevelUp(mob.GiveExperience());
-
-            return $"The Monster is Dead! Experience Gain: {mob.GiveExperience()}";
+                return $"You attacked {mob.GetType().Name}!";
+            }
+            else
+            {
+                return "";
+            }
+           
         }
 
         public string AttackWithSpell(IMob mob)
@@ -82,10 +94,10 @@ namespace Pike_Place.Models
             {
                 case ConsoleKey.RightArrow:
                     this.Delete();
-                    if (coords.x < Constants.PlayBoxWidth - this.Width)
+                    if (coords.x < Constants.Constants.PlayBoxWidth - this.Width)
                     {
-                        if (coords.x + Constants.MainShipSpeedX <= Constants.PlayBoxWidth - this.Width)
-                            coords.x += Constants.MainShipSpeedX;
+                        if (coords.x + Constants.Constants.MainShipSpeedX <= Constants.Constants.PlayBoxWidth - this.Width)
+                            coords.x += Constants.Constants.MainShipSpeedX;
                         coords.x++;
                     }
                     this.Draw();
@@ -93,10 +105,10 @@ namespace Pike_Place.Models
                 case ConsoleKey.LeftArrow:
                     this.Delete();
 
-                    if (coords.x - 1 > Constants.FrameWidth)
+                    if (coords.x - 1 > Constants.Constants.FrameWidth)
                     {
-                        if (coords.x - Constants.MainShipSpeedX > Constants.FrameWidth)
-                            coords.x -= Constants.MainShipSpeedX;
+                        if (coords.x - Constants.Constants.MainShipSpeedX > Constants.Constants.FrameWidth)
+                            coords.x -= Constants.Constants.MainShipSpeedX;
                         coords.x--;
                     }
                     this.Draw();
@@ -105,10 +117,10 @@ namespace Pike_Place.Models
                 case ConsoleKey.UpArrow:
                     this.Delete();
 
-                    if (coords.y - 1 > Constants.FrameWidth+3)
+                    if (coords.y - 1 > Constants.Constants.FrameWidth+3)
                     {
-                        if (coords.y - Constants.MainShipSpeedY > Constants.FrameWidth)
-                            coords.y -= Constants.MainShipSpeedY;
+                        if (coords.y - Constants.Constants.MainShipSpeedY > Constants.Constants.FrameWidth)
+                            coords.y -= Constants.Constants.MainShipSpeedY;
                         coords.y--;
                     }
                     this.Draw();
@@ -118,27 +130,40 @@ namespace Pike_Place.Models
                 case ConsoleKey.DownArrow:
                     this.Delete();
 
-                    if (coords.y < Constants.PlayBoxHeight - this.Height)
+                    if (coords.y < Constants.Constants.PlayBoxHeight - this.Height)
                     {
-                        if (coords.y + Constants.MainShipSpeedY <= Constants.PlayBoxHeight - this.Height)
-                            coords.y += Constants.MainShipSpeedY;
+                        if (coords.y + Constants.Constants.MainShipSpeedY <= Constants.Constants.PlayBoxHeight - this.Height)
+                            coords.y += Constants.Constants.MainShipSpeedY;
                         coords.y++;
                     }
                     this.Draw();
 
                     break;
-                case ConsoleKey.A:
-                    this.Delete();
-                    Thread.Sleep(250);
-                            
-                    
-                    this.Draw();
-
-                    break;
+              
                 default:
                     this.Draw();
                     break;
             }
+        }
+
+        public bool IsInRange(Mob other)
+        {
+           
+            if (this.position.x> other.Position.x -4 - this.Width)
+            {
+                if (this.position.y > other.Position.y-4-this.Height && this.position.y<other.Position.y+other.MobPicture.Length+4)
+                {
+                    return true;
+                }
+            }
+             if (this.position.x > other.Position.x+ other.MobPicture.Length && this.position.x < other.Position.x + other.MobPicture.Length+4)
+            {
+                if (this.position.y > other.Position.y - 4 - this.Height && this.position.y < other.Position.y + other.MobPicture.Length + 4)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

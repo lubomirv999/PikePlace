@@ -1,4 +1,6 @@
-﻿namespace Pike_Place.Models.Mobs
+﻿using Pike_Place.Models.Others;
+
+namespace Pike_Place.Models.Mobs
 {
     public class SkullCrusher : Mob
     {
@@ -11,6 +13,8 @@
             this.Health = InitHealth;
             this.Attack = InitAttack;
             this.Experience = InitExperience;
+            this.Position = new Coordinates(Constants.Constants.MobSpawnPositionX, Constants.Constants.MobSpawnPositionY);
+            this.MobPicture = Constants.Constants.MobPicture;
         }
 
         public override string ToString()

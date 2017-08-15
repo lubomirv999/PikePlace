@@ -1,4 +1,4 @@
-﻿namespace Pike_Place.Enums
+﻿namespace Pike_Place.Models.Enums
 {
     public enum Type
     {

@@ -1,4 +1,4 @@
-﻿namespace Pike_Place.Models.Spells
+﻿namespace Pike_Place.Models.Spells.Mage
 {
     public class FrostBolt : ISpell
     {

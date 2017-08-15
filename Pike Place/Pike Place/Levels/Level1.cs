@@ -3,7 +3,9 @@ using System.Diagnostics;
 using System.Threading;
 using Pike_Place.Core;
 using Pike_Place.Factories;
+using Pike_Place.Interfaces.Creatures;
 using Pike_Place.Models;
+using Pike_Place.Models.Heroes;
 using Pike_Place.Models.Mobs;
 
 namespace Pike_Place.Levels
@@ -33,7 +35,22 @@ namespace Pike_Place.Levels
                         ConsoleKeyInfo KeyInfo;
 
                         KeyInfo = Console.ReadKey(true);
-                        hero.Move(KeyInfo, ref hero.position);
+                        if (KeyInfo.Key == ConsoleKey.A)
+                        {
+                            hero.Delete();
+                            Thread.Sleep(250);
+                            Console.SetCursorPosition(3, 4);
+                            Console.WriteLine(hero.AutoAttack(mob));
+                            hero.Draw();
+                            Menu.DrawScores(hero, mob);
+                        }
+                        else
+                        {
+                            Console.SetCursorPosition(3, 4);
+                            Console.WriteLine(new string(' ', Constants.Constants.PlayBoxWidth - 1));
+                            hero.Move(KeyInfo, ref hero.position);
+                        }
+                        
                     }
 
                     continue;

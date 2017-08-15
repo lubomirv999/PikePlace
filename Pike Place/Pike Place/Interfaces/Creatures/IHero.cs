@@ -1,9 +1,8 @@
 ﻿using Pike_Place.Interfaces.Abilities;
-using Pike_Place.Interfaces.Creatures;
 
-namespace Pike_Place.Interfaces
+namespace Pike_Place.Interfaces.Creatures
 {
-    public interface IHero : IDamagable , IMana,IMoveable,IDrawable
+    public interface IHero : IDamagable, IMana, IMoveable, IDrawable
     {
         string Name { get; }
 
@@ -12,6 +11,7 @@ namespace Pike_Place.Interfaces
         int AttackPower { get; }
 
         ILevel Level { get; }
+
         
     }
 }

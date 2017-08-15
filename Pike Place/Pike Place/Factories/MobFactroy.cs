@@ -7,16 +7,16 @@ namespace Pike_Place.Factories
     {
         public static Mob GenerateMob(int randomNumber)
         {
-            Mob mob;
+           
 
             switch (randomNumber)
             {
                 case 0:
-                    return mob = new Doom();
+                    return  new Doom();
                 case 1:
-                    return mob = new SkullCrusher();
+                    return  new SkullCrusher();
                 case 2:
-                    return mob = new TheViper();
+                    return  new TheViper();
                 default:
                     return null;
             }

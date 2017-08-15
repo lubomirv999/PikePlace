@@ -1,11 +1,14 @@
-﻿public struct Coordinates
+﻿namespace Pike_Place.Models.Others
 {
-    public int x;
-    public int y;
-
-    public Coordinates(int x, int y)
+    public struct Coordinates
     {
-        this.x = x;
-        this.y = y;
+        public int x;
+        public int y;
+
+        public Coordinates(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
     }
 }

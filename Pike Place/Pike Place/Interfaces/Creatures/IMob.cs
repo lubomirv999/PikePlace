@@ -1,4 +1,5 @@
 ﻿using Pike_Place.Interfaces.Abilities;
+using Pike_Place.Models.Others;
 
 namespace Pike_Place.Interfaces.Creatures
 {
@@ -10,6 +11,8 @@ namespace Pike_Place.Interfaces.Creatures
         
         int Experience { get; }
 
+        Coordinates Position { get; }
+        
         int GiveExperience();
 
         bool IsDead();

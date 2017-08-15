@@ -1,5 +1,6 @@
 ﻿using System;
 using Pike_Place.Interfaces.Creatures;
+using Pike_Place.Models.Others;
 
 namespace Pike_Place.Models.Mobs
 {
@@ -8,14 +9,16 @@ namespace Pike_Place.Models.Mobs
         public int Health { get; protected set; }
         public int Attack { get; protected set; }
         public int Experience { get; protected set; }
+        public Coordinates Position { get; protected set; }
+        public string[] MobPicture { get; set; }
 
         public int GiveExperience()
         {
-            if (!IsDead())
+            if (IsDead())
             {
-                throw new ArgumentException($"Monster left Health {this.Health}");
+               return this.Experience;
             }
-            return this.Experience;
+            return 0;
         }
 
         public bool IsDead()
@@ -34,9 +37,9 @@ namespace Pike_Place.Models.Mobs
 
         public void Draw()
         {
-            Coordinates coords = new Coordinates(Constants.MobSpawnPositionX,Constants.MobSpawnPositionY);
+            Coordinates coords = this.Position;
 
-            foreach (var line in Constants.MobPicture)
+            foreach (var line in this.MobPicture)
             {
                 Console.SetCursorPosition(coords.x, coords.y);
                 Console.WriteLine("{0}", line);

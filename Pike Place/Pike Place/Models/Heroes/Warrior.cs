@@ -1,11 +1,7 @@
-﻿using System;
-using Pike_Place.Interfaces.Concreet;
-using Pike_Place.Interfaces.Creatures;
-using Pike_Place.Models;
-using Pike_Place.Models.Spells;
+﻿using Pike_Place.Interfaces.Abilities;
 using Pike_Place.Models.Spells.Warrior;
 
-namespace Pike_Place.Heroes
+namespace Pike_Place.Models.Heroes
 {
     public class Warrior : Hero
     {
@@ -21,6 +17,10 @@ namespace Pike_Place.Heroes
             this.Health = InitHealth * this.Level.CurrentLevel;
             this.AttackPower = InitAttackPower * this.Level.CurrentLevel;
             this.Mana = InitMana * this.Level.CurrentLevel;
+            this.HeroPicture = Constants.Constants.MagePicture;
+            this.Height = Constants.Constants.MageHeight;
+            this.Width = Constants.Constants.MageWidth;
+           
         }
         
     }

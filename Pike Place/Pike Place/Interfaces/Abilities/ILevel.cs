@@ -1,4 +1,4 @@
-﻿namespace Pike_Place.Interfaces
+﻿namespace Pike_Place.Interfaces.Abilities
 {
     public interface ILevel
     {
