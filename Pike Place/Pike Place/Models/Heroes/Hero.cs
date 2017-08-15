@@ -37,7 +37,7 @@ namespace Pike_Place.Models.Heroes
                 if (mob.IsDead())
                 {
                     this.Level.LevelUp(mob.GiveExperience());
-                    return $"You killed {mob.GetType().Name}!";
+                   return $"You killed {mob.GetType().Name}!";
                 }
                 
 

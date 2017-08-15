@@ -16,6 +16,7 @@ namespace Pike_Place.Models.Mobs
         {
             if (IsDead())
             {
+                Health = 0;
                return this.Experience;
             }
             return 0;
