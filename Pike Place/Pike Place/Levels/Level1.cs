@@ -28,6 +28,14 @@ namespace Pike_Place.Levels
 
             do
             {
+                if (mob.IsDead())
+                {
+                    mob.Delete();
+                    rnd = new Random();
+                    mob = MobFactroy.GenerateMob(rnd.Next(0, 2));
+                    Menu.DrawScores(hero, mob);
+
+                }
                 if (time.Elapsed.Milliseconds % 80 == 0)
                 {
                     if (Console.KeyAvailable)
