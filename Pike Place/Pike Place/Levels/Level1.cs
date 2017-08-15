@@ -13,16 +13,17 @@ namespace Pike_Place.Levels
     class Level1
     {
         internal void Start(Hero hero)
-        {
-           
+        {          
             Console.Clear();
             Menu.DrawFrame();
             hero.Draw();
+
             Random rnd = new Random();
 
             Mob mob = MobFactroy.GenerateMob(rnd.Next(0, 2));
             Menu.DrawScores(hero, mob);
             mob.Draw();
+
             Stopwatch time = new Stopwatch();
             time.Start();
 
@@ -34,7 +35,6 @@ namespace Pike_Place.Levels
                     rnd = new Random();
                     mob = MobFactroy.GenerateMob(rnd.Next(0, 2));
                     Menu.DrawScores(hero, mob);
-
                 }
                 if (time.Elapsed.Milliseconds % 80 == 0)
                 {

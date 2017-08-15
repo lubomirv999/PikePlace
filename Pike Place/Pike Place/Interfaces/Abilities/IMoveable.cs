@@ -1,6 +1,4 @@
-﻿
-using System;
-using Pike_Place.Models;
+﻿using System;
 using Pike_Place.Models.Mobs;
 using Pike_Place.Models.Others;
 

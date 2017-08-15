@@ -19,9 +19,7 @@ namespace Pike_Place.Models.Heroes
             this.Mana = InitMana * this.Level.CurrentLevel;
             this.HeroPicture = Constants.Constants.MagePicture;
             this.Height = Constants.Constants.MageHeight;
-            this.Width = Constants.Constants.MageWidth;
-          
-        }
-        
+            this.Width = Constants.Constants.MageWidth;          
+        }       
     }
 }

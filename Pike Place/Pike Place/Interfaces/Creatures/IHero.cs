@@ -10,8 +10,6 @@ namespace Pike_Place.Interfaces.Creatures
 
         int AttackPower { get; }
 
-        ILevel Level { get; }
-
-        
+        ILevel Level { get; }     
     }
 }

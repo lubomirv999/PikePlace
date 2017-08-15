@@ -1,11 +1,7 @@
 ﻿using Pike_Place.Levels;
-using Pike_Place.Models;
 using System;
-using System.Data;
-using Pike_Place.Interfaces;
 using Pike_Place.Interfaces.Creatures;
 using Pike_Place.Models.Heroes;
-using Pike_Place.Models.Mobs;
 
 namespace Pike_Place.Core
 {
@@ -13,18 +9,19 @@ namespace Pike_Place.Core
     {
         public static void Draw(string[] menuItems)
         {
-            Console.SetBufferSize(Constants.Constants.ConsoleWindowWidth, Constants.Constants.ConsoleWindowHeight);
-            Console.SetWindowSize(Constants.Constants.ConsoleWindowWidth, Constants.Constants.ConsoleWindowHeight);
-            Console.CursorVisible = false;
             int selecteditem = 0;
             bool gameStarted = false;
+
+            SetConsoleStartup();          
             DrawFrame();
             ClearMenu(menuItems);
+
             while (!gameStarted)
             {
                 for (int i = 0; i < menuItems.Length; i++)
                 {
                     Console.SetCursorPosition(45, 20 + i); //TODO: add it to const
+
                     if (selecteditem == i)
                     {
                         Console.BackgroundColor = ConsoleColor.Gray;
@@ -75,7 +72,7 @@ namespace Pike_Place.Core
                         }
                         else if (selecteditem == 0)
                         {
-                            CreateHero(new string[] {"Mage", "Warrior", "Marksman", "back"}, ref gameStarted,
+                            CreateHero(new string[] { "Mage", "Warrior", "Marksman", "back" }, ref gameStarted,
                                 menuItems);
                         }
                         break;
@@ -84,6 +81,13 @@ namespace Pike_Place.Core
                         break;
                 }
             }
+        }
+
+        private static void SetConsoleStartup()
+        {
+            Console.SetBufferSize(Constants.Constants.ConsoleWindowWidth, Constants.Constants.ConsoleWindowHeight);
+            Console.SetWindowSize(Constants.Constants.ConsoleWindowWidth, Constants.Constants.ConsoleWindowHeight);
+            Console.CursorVisible = false;
         }
 
         private static void ClearMenu(string[] menuItems)
@@ -101,10 +105,12 @@ namespace Pike_Place.Core
             Console.CursorVisible = false;
             int selecteditem = 0;
             bool goBack = false;
+
             while (started == false && goBack == false)
             {
                 Console.SetCursorPosition(45, 19);
                 Console.WriteLine("Choose your hero type:");
+
                 for (int i = 0; i < herotype.Length; i++)
                 {
                     Console.SetCursorPosition(45, 20 + i);
@@ -121,6 +127,7 @@ namespace Pike_Place.Core
                         Console.Write(" " + herotype[i]);
                     }
                 }
+
                 var key = Console.ReadKey();
                 switch (key.Key)
                 {
@@ -162,7 +169,6 @@ namespace Pike_Place.Core
                             var hero = new Warrior(NameHero());
                             var startlevel = new Level1();
                             startlevel.Start(hero);
-
                             started = true;
                         }
                         else if (selecteditem == 2)
@@ -205,6 +211,7 @@ namespace Pike_Place.Core
         private static void ShowCredits(string[] menuItems)
         {
             ClearMenu(menuItems);
+
             Console.SetCursorPosition(45, 20);
             Console.WriteLine("Po proekta sa rabotili:");
             Console.SetCursorPosition(45, 21);
@@ -228,27 +235,26 @@ namespace Pike_Place.Core
             Console.Write("Press enter to back");
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Black;
+
             var key = Console.ReadKey();
             while (key.Key != ConsoleKey.Enter)
             {
                 key = Console.ReadKey();
             }
+
             for (int index = 0; index < 7; index++)
             {
                 Console.SetCursorPosition(45, 20 + index); //TODO to const 
                 Console.Write(new string(' ', 30));
             }
-            Console.ResetColor();
-        }
 
-        private static string HeroCreatedSuccesfully(string name, string type)
-        {
-            return $"Hero with name: {name} from class {type} was succesfully created";
+            Console.ResetColor();
         }
 
         public static void DrawFrame()
         {
             Console.WriteLine('\u2554' + new String('\u2550', Constants.Constants.PlayBoxWidth) + '\u2557');
+
             for (int i = 0; i < Constants.Constants.PlayBoxHeight; i++)
             {
                 Console.WriteLine('\u2551' + new String(' ', Constants.Constants.PlayBoxWidth) + '\u2551');

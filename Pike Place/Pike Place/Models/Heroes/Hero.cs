@@ -8,9 +8,7 @@ using Pike_Place.Models.Spells;
 namespace Pike_Place.Models.Heroes
 {
     public abstract class Hero : IHero
-    {
-       
-
+    {      
         public string Name { get; protected set; }
         public int Health { get; protected set; }
         public int Mana { get; protected set; }
@@ -38,8 +36,7 @@ namespace Pike_Place.Models.Heroes
                 {
                     this.Level.LevelUp(mob.GiveExperience());
                    return $"You killed {mob.GetType().Name}!";
-                }
-                
+                }                
 
                 return $"You attacked {mob.GetType().Name}!";
             }
@@ -58,6 +55,7 @@ namespace Pike_Place.Models.Heroes
             {
                 throw new ArgumentException("Not enough mana");
             }
+
             this.Mana -= Spell.ManaCost;
 
             this.Level.LevelUp(mob.GiveExperience());

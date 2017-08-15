@@ -14,17 +14,13 @@
 
         public int CurrentLevel
         {
-            get { return this.currentLevel; } 
+            get { return this.currentLevel; }
             private set { this.currentLevel = value; }
         }
 
         public int Experience
         {
-            get
-            {
-                return this.experience;
-                
-            }
+            get { return this.experience; }
             set { this.experience = value; }
         }
 
@@ -40,6 +36,5 @@
                 this.experience %= expNeededForLvlUp;
             }
         }
-        
     }
 }
