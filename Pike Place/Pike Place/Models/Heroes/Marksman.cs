@@ -17,9 +17,9 @@ namespace Pike_Place.Models.Heroes
             this.Health = InitHealth * this.Level.CurrentLevel;
             this.AttackPower = InitAttackPower * this.Level.CurrentLevel;
             this.Mana = InitMana * this.Level.CurrentLevel;
-            this.HeroPicture = Constants.Constants.MagePicture;
-            this.Height = Constants.Constants.MageHeight;
-            this.Width = Constants.Constants.MageWidth;           
+            this.HeroPicture = Constants.Constants.MarksmanPicture;
+            this.Height = Constants.Constants.MarksmanHeight;
+            this.Width = Constants.Constants.MarksmanWidth;           
         }        
     }
 }
