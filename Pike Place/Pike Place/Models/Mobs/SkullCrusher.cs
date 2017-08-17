@@ -5,7 +5,7 @@ namespace Pike_Place.Models.Mobs
     public class SkullCrusher : Mob
     {
         private const int InitHealth = 15;
-        private const int InitAttack = 2;
+        private const int InitAttack = 3;
         private const int InitExperience = 12;
 
         public SkullCrusher()

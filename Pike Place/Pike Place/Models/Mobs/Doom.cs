@@ -5,7 +5,7 @@ namespace Pike_Place.Models.Mobs
     public class Doom : Mob
     {
         private const int InitHealth = 10;
-        private const int InitAttack = 1;
+        private const int InitAttack = 4;
         private const int InitExperience = 10;
 
         public Doom()

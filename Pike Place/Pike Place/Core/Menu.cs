@@ -109,9 +109,9 @@ namespace Pike_Place.Core
         {
             Console.Clear();
             DrawFrame();
-            Console.SetCursorPosition(Constants.Constants.ConsoleWindowWidth/2, Constants.Constants.ConsoleWindowHeight/2);
-            Console.WriteLine($"GAME OVER!");
-            Console.SetCursorPosition(Constants.Constants.ConsoleWindowWidth / 2, Constants.Constants.ConsoleWindowHeight / 2 +1);
+            Console.SetCursorPosition(25, Constants.Constants.ConsoleWindowHeight/2);
+            Console.WriteLine($"THIS GAME IS OVER, JUST LIKE MY WILL TO PARTICIPATE IN ANOTHER GROUP PROJECT!");
+            Console.SetCursorPosition(50, Constants.Constants.ConsoleWindowHeight / 2 +2);
             Console.WriteLine("Press ENTER to play again...");
         }
         private static void SetConsoleStartup()
