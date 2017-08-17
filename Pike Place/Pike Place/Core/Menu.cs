@@ -1,5 +1,6 @@
 ﻿using Pike_Place.Levels;
 using System;
+using System.Runtime.InteropServices;
 using Pike_Place.Interfaces.Creatures;
 using Pike_Place.Models.Heroes;
 
@@ -11,13 +12,34 @@ namespace Pike_Place.Core
         {
             int selecteditem = 0;
             bool gameStarted = false;
-
+            bool gameEnded = false;
             SetConsoleStartup();          
             DrawFrame();
             ClearMenu(menuItems);
 
-            while (!gameStarted)
+            while (gameStarted==false || gameEnded)
             {
+                if (gameEnded)
+                {
+                    GameOver();
+                    ConsoleKeyInfo keyInfo;
+                    keyInfo = Console.ReadKey(true);
+                    if (keyInfo.Key==ConsoleKey.Enter)
+                    {
+                        selecteditem = 0;
+                        gameStarted = false;
+                        gameEnded = false;
+                        Console.Clear();
+                        SetConsoleStartup();
+                        DrawFrame();
+                        continue;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                  
+                }
                 for (int i = 0; i < menuItems.Length; i++)
                 {
                     Console.SetCursorPosition(45, 20 + i); //TODO: add it to const
@@ -72,7 +94,7 @@ namespace Pike_Place.Core
                         }
                         else if (selecteditem == 0)
                         {
-                            CreateHero(new string[] { "Mage", "Warrior", "Marksman", "back" }, ref gameStarted,
+                            CreateHero(Constants.Constants.ChooseHeroMenuItems , ref gameStarted, ref gameEnded,
                                 menuItems);
                         }
                         break;
@@ -83,6 +105,15 @@ namespace Pike_Place.Core
             }
         }
 
+        public static void GameOver()
+        {
+            Console.Clear();
+            DrawFrame();
+            Console.SetCursorPosition(Constants.Constants.ConsoleWindowWidth/2, Constants.Constants.ConsoleWindowHeight/2);
+            Console.WriteLine($"GAME OVER!");
+            Console.SetCursorPosition(Constants.Constants.ConsoleWindowWidth / 2, Constants.Constants.ConsoleWindowHeight / 2 +1);
+            Console.WriteLine("Press ENTER to play again...");
+        }
         private static void SetConsoleStartup()
         {
             Console.SetBufferSize(Constants.Constants.ConsoleWindowWidth, Constants.Constants.ConsoleWindowHeight);
@@ -99,14 +130,14 @@ namespace Pike_Place.Core
             }
         }
 
-        private static void CreateHero(string[] herotype, ref bool started, string[] menuItems)
+        private static void CreateHero(string[] herotype, ref bool started,ref bool ended, string[] menuItems)
         {
             ClearMenu(menuItems);
             Console.CursorVisible = false;
             int selecteditem = 0;
             bool goBack = false;
 
-            while (started == false && goBack == false)
+            while (started == false && goBack == false && ended==false)
             {
                 Console.SetCursorPosition(45, 19);
                 Console.WriteLine("Choose your hero type:");
@@ -161,23 +192,26 @@ namespace Pike_Place.Core
                         {
                             var hero = new Mage(NameHero());
                             var startlevel = new Level1();
-                            startlevel.Start(hero);
                             started = true;
+                            startlevel.Start(hero,ref ended);
+                           
                         }
                         else if (selecteditem == 1)
                         {
                             var hero = new Warrior(NameHero());
                             var startlevel = new Level1();
-                            startlevel.Start(hero);
                             started = true;
+                            startlevel.Start(hero,ref ended);
+                          
                         }
                         else if (selecteditem == 2)
                         {
                             var name = NameHero();
                             var hero = new Marksman(name);
                             var startlevel = new Level1();
-                            startlevel.Start(hero);
                             started = true;
+                            startlevel.Start(hero,ref ended);
+                            
                         }
                         else if (selecteditem == 3)
                         {
@@ -207,7 +241,7 @@ namespace Pike_Place.Core
             return name;
         }
 
-
+        
         private static void ShowCredits(string[] menuItems)
         {
             ClearMenu(menuItems);

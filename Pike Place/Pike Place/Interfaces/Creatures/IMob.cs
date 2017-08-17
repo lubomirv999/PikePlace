@@ -3,7 +3,7 @@ using Pike_Place.Models.Others;
 
 namespace Pike_Place.Interfaces.Creatures
 {
-    public interface IMob : IDamagable,IDrawable
+    public interface IMob : IDamagable,IDrawable,IMortal
     {
         int Health { get; }
 
@@ -15,6 +15,6 @@ namespace Pike_Place.Interfaces.Creatures
         
         int GiveExperience();
 
-        bool IsDead();
+       
     }
 }

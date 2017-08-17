@@ -5,7 +5,7 @@
         public void Run()
         {
             var menu = new Menu();
-            Menu.Draw(new string[] { "Create Hero", "Credits", "Exit" });
+            Menu.Draw(Constants.Constants.StartMenuItems);
         }
     }
 }

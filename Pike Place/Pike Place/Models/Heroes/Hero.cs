@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
+using Pike_Place.Core;
 using Pike_Place.Interfaces.Abilities;
 using Pike_Place.Interfaces.Creatures;
 using Pike_Place.Models.Mobs;
@@ -22,7 +24,13 @@ namespace Pike_Place.Models.Heroes
 
         public void TakeDamage(int attackPower)
         {
+            
             this.Health -= attackPower;
+            if (this.Health<0)
+            {
+                this.Health = 0;
+            }
+           
         }
 
         public string AutoAttack(Mob mob)
@@ -35,6 +43,7 @@ namespace Pike_Place.Models.Heroes
                 if (mob.IsDead())
                 {
                     this.Level.LevelUp(mob.GiveExperience());
+                    Heal(mob.Experience);
                    return $"You killed {mob.GetType().Name}!";
                 }                
 
@@ -42,26 +51,25 @@ namespace Pike_Place.Models.Heroes
             }
             else
             {
-                return "";
+                return "You should be in the mobs range to autoattack!";
             }
            
         }
 
-        public string AttackWithSpell(IMob mob)
+        public string AttackWithSpell(Mob mob)
         {
-            mob.TakeDamage(Spell.Damage);
-
-            if (this.Mana < Spell.ManaCost)
+           if (this.Mana < Spell.ManaCost)
             {
-                throw new ArgumentException("Not enough mana");
+                return "Not enough mana!";
             }
-
-            this.Mana -= Spell.ManaCost;
-
-            this.Level.LevelUp(mob.GiveExperience());
-
-            return $"The Monster is Dead! Experience Gain: {mob.GiveExperience()}";
-        }
+            else
+            {
+                mob.TakeDamage(Spell.Damage);
+                this.Mana -= Spell.ManaCost;
+                this.Level.LevelUp(mob.GiveExperience());
+                 return $"You attacked : {mob.GetType().Name} with spell!";
+            }
+       }
 
         public void Draw()
         {
@@ -160,6 +168,20 @@ namespace Pike_Place.Models.Heroes
                 {
                     return true;
                 }
+            }
+            return false;
+        }
+
+        public void Heal(int hp)
+        {
+            this.Health += hp;
+        }
+
+        public bool IsDead()
+        {
+            if (this.Health==0)
+            {
+                return true;
             }
             return false;
         }

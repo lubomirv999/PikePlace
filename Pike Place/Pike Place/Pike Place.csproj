@@ -47,7 +47,9 @@
     <Compile Include="Core\Menu.cs" />
     <Compile Include="Factories\MobFactroy.cs" />
     <Compile Include="Interfaces\Abilities\IDrawable.cs" />
+    <Compile Include="Interfaces\Abilities\IHealable.cs" />
     <Compile Include="Interfaces\Abilities\IMana.cs" />
+    <Compile Include="Interfaces\Abilities\IMortal.cs" />
     <Compile Include="Interfaces\Abilities\IMoveable.cs" />
     <Compile Include="Interfaces\Abilities\Level.cs" />
     <Compile Include="Interfaces\Abilities\IDamagable.cs" />

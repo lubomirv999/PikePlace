@@ -4,6 +4,9 @@
     {
         public static readonly string[] MagePicture = new string[] { "(\\ _ /)", "(' x ')", "c(\")(\")" };
         public static readonly string[] MobPicture = new string[] { "________", "|(.)(.)|", "|  __  |", "|______|" };
+        public static readonly string[] StartMenuItems = new string[] {"Create Hero", "Credits", "Exit"};
+        public static readonly string[] ChooseHeroMenuItems = new string[] {"Mage", "Warrior", "Marksman", "back"};
+
 
         public const int MageHeight = 3;
         public const int MageWidth = 7;
@@ -22,5 +25,6 @@
         public const int MainShipSpeedY = 2;
         public const int MobSpawnPositionX = 90;
         public const int MobSpawnPositionY = 25;
+
     }
 }

@@ -12,8 +12,8 @@ namespace Pike_Place.Levels
 {
     class Level1
     {
-        internal void Start(Hero hero)
-        {          
+        internal void Start(Hero hero, ref bool ended)
+        {
             Console.Clear();
             Menu.DrawFrame();
             hero.Draw();
@@ -36,6 +36,10 @@ namespace Pike_Place.Levels
                     mob = MobFactroy.GenerateMob(rnd.Next(0, 2));
                     Menu.DrawScores(hero, mob);
                 }
+                if (hero.IsDead())
+                {
+                    ended = true;
+                }
                 if (time.Elapsed.Milliseconds % 80 == 0)
                 {
                     if (Console.KeyAvailable)
@@ -48,22 +52,34 @@ namespace Pike_Place.Levels
                             hero.Delete();
                             Thread.Sleep(250);
                             Console.SetCursorPosition(3, 4);
+                            Console.WriteLine(new string(' ', Constants.Constants.PlayBoxWidth -3));
+                            Console.SetCursorPosition(3, 4);
                             Console.WriteLine(hero.AutoAttack(mob));
+                            hero.Draw();
+                            Menu.DrawScores(hero, mob);
+                        }
+                        else if (KeyInfo.Key == ConsoleKey.S)
+                        {
+                            hero.Delete();
+                            Thread.Sleep(250);
+                            Console.SetCursorPosition(3, 4);
+                            Console.WriteLine(new string(' ', Constants.Constants.PlayBoxWidth - 3));
+                            Console.SetCursorPosition(3, 4);
+                            Console.WriteLine(hero.AttackWithSpell(mob));
                             hero.Draw();
                             Menu.DrawScores(hero, mob);
                         }
                         else
                         {
                             Console.SetCursorPosition(3, 4);
-                            Console.WriteLine(new string(' ', Constants.Constants.PlayBoxWidth - 1));
+                            Console.WriteLine(new string(' ', Constants.Constants.PlayBoxWidth - 3));
                             hero.Move(KeyInfo, ref hero.position);
                         }
-                        
                     }
 
                     continue;
                 }
-            } while (true);
+            } while (!ended);
 
 
             //            while (true)
