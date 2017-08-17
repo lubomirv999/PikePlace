@@ -35,6 +35,7 @@ namespace Pike_Place.Levels
                     rnd = new Random();
                     mob = MobFactroy.GenerateMob(rnd.Next(0, 2));
                     Menu.DrawScores(hero, mob);
+                    mob.Draw();
                 }
                 if (hero.IsDead())
                 {

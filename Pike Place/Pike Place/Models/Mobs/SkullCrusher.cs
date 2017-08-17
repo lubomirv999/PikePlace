@@ -14,7 +14,7 @@ namespace Pike_Place.Models.Mobs
             this.Attack = InitAttack;
             this.Experience = InitExperience;
             this.Position = new Coordinates(Constants.Constants.MobSpawnPositionX, Constants.Constants.MobSpawnPositionY);
-            this.MobPicture = Constants.Constants.MobPicture;
+            this.MobPicture = Constants.Constants.SkullPicture;
         }
 
         public override string ToString()

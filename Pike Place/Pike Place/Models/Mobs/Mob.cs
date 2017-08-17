@@ -50,13 +50,13 @@ namespace Pike_Place.Models.Mobs
 
         public void Delete()
         {
-//            Coordinates coords = new Coordinates(this.position.x, this.position.y);
-//            for (int i = 0; i < this.Height; i++)
-//            {
-//                Console.SetCursorPosition(coords.x, coords.y);
-//                Console.WriteLine(new string(' ', this.Width));
-//                coords.y++;
-//            }
+            Coordinates coords = new Coordinates(this.Position.x, this.Position.y);
+            for (int i = 0; i < this.MobPicture.Length; i++)
+            {
+                Console.SetCursorPosition(coords.x, coords.y);
+                Console.WriteLine(new string(' ', this.MobPicture[i].Length));
+                coords.y++;
+            }
         }
     }
 }

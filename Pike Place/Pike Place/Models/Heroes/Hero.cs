@@ -44,6 +44,7 @@ namespace Pike_Place.Models.Heroes
                 {
                     this.Level.LevelUp(mob.GiveExperience());
                     Heal(mob.Experience);
+                    Mana += 7;
                    return $"You killed {mob.GetType().Name}!";
                 }                
 
@@ -67,7 +68,7 @@ namespace Pike_Place.Models.Heroes
                 mob.TakeDamage(Spell.Damage);
                 this.Mana -= Spell.ManaCost;
                 this.Level.LevelUp(mob.GiveExperience());
-                 return $"You attacked : {mob.GetType().Name} with spell!";
+                 return $"You attacked {mob.GetType().Name} with spell {Spell.GetType().Name}!";
             }
        }
 

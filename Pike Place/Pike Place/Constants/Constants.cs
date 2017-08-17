@@ -3,7 +3,9 @@
     public static class Constants
     {
         public static readonly string[] MagePicture = new string[] { "(\\ _ /)", "(' x ')", "c(\")(\")" };
-        public static readonly string[] MobPicture = new string[] { "________", "|(.)(.)|", "|  __  |", "|______|" };
+        public static readonly string[] DoomPicture = new string[] { "________", "|(.)(.)|", "|  __  |", "|______|" };
+        public static readonly string[] SkullPicture = new string[] { "________", "|(x)(x)|", "|  \\/  |", "|______|" };
+        public static readonly string[] ViperPicture = new string[] { "________", "|(o)(o)|", "|  o   |", "|______|" };
         public static readonly string[] StartMenuItems = new string[] {"Create Hero", "Credits", "Exit"};
         public static readonly string[] ChooseHeroMenuItems = new string[] {"Mage", "Warrior", "Marksman", "back"};
 
