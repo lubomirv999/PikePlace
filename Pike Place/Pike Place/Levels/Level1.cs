@@ -70,6 +70,11 @@ namespace Pike_Place.Levels
                             hero.Draw();
                             Menu.DrawScores(hero, mob);
                         }
+                        else if (KeyInfo.Key == ConsoleKey.Escape)
+                        {
+                            Console.Clear();
+                            Environment.Exit(0);
+                        }
                         else
                         {
                             Console.SetCursorPosition(3, 4);
